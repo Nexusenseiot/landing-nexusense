@@ -75,7 +75,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Veja a plataforma em ação</h2>
           <img
-            src="demo-dashboard.png"
+            src="demo-dashboard.jfif"
             alt="Dashboard IoT"
             className="rounded-xl shadow-xl mx-auto max-w-full h-auto"
           />

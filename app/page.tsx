@@ -1,60 +1,155 @@
-'use client';
-
 import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-950 text-white">
-      {/* HERO */}
-      <section className="text-center py-20 px-4 bg-[url('/demo-dashboard.jfif')] bg-cover bg-center">
-        <div className="bg-black/60 backdrop-blur-sm p-10 rounded-xl inline-block">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Bem-vindo à <span className="text-blue-400">NexuSense IoT</span>
-          </h1>
-          <p className="text-lg md:text-xl max-w-xl mx-auto">
-            Monitoramento inteligente para reservatórios e salas de bombas com tecnologia de ponta.
+    <>
+      {/* HERO SECTION */}
+      <main className="relative min-h-screen flex flex-col items-center justify-center text-white bg-black">
+        <div className="absolute inset-0 bg-[url('/demo-dashboard.jfif')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+        <div className="relative z-10 text-center px-6 -mt-12">
+          <Image
+            src="/nexusense-logo.png"
+            alt="Logo NexuSense IoT"
+            width={480}
+            height={240}
+            priority
+            className="mx-auto mb-4 drop-shadow-[0_0_25px_rgba(0,255,255,0.7)]"
+          />
+          <p className="text-2xl md:text-3xl max-w-2xl mx-auto mb-3">
+            Soluções inteligentes para monitoramento de água em condomínios.
+          </p>
+          <p className="text-xl md:text-2xl max-w-2xl mx-auto mb-4 text-gray-300">
+            Simples, eficiente e conectado.
           </p>
           <a
             href="https://wa.me/5568996055488"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition"
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition"
           >
-            Fale conosco no WhatsApp
+            Fale com a gente no WhatsApp
           </a>
         </div>
-      </section>
+      </main>
 
-      {/* MONITORAMENTO EM TEMPO REAL */}
-      <section className="bg-gray-900 text-white py-16 px-4">
+      {/* DASHBOARD ANIMADO */}
+      <section className="relative bg-gray-900 text-white py-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10">Monitoramento em tempo real</h2>
+          <h2 className="text-3xl font-bold mb-6">Veja a plataforma em ação</h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { src: "/reservatorio1.jfif", titulo: "Reservatório A", nivel: "82%", volume: "16400L", cor: "cyan" },
-              { src: "/reservatorio2.jfif", titulo: "Reservatório B", nivel: "68%", volume: "13600L", cor: "blue" },
-              { src: "/bombas1.jfif", titulo: "Sala de Bombas 1", status: "Ativa", cor: "green" },
-              { src: "/bombas2.jfif", titulo: "Sala de Bombas 2", status: "Inativa", cor: "red" },
-            ].map((item, idx) => (
-              <div key={idx} className="relative rounded-xl overflow-hidden shadow-xl">
-                <img
-                  src={item.src}
-                  alt={item.titulo}
-                  className="w-full h-64 object-cover brightness-90"
-                />
-                <div className="absolute bottom-0 w-full bg-black/50 px-4 py-3">
-                  <h3 className="text-lg font-bold text-white">{item.titulo}</h3>
-                  {item.nivel && <p className="text-sm">Nível: <span className="font-semibold">{item.nivel}</span></p>}
-                  {item.volume && <p className="text-sm">Volume: <span className="font-semibold">{item.volume}</span></p>}
-                  {item.status && <p className="text-sm">Status: <span className={`text-${item.cor}-400 font-semibold`}>{item.status}</span></p>}
-                </div>
-              </div>
-            ))}
+          <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/demo-dashboard.jfif"
+              alt="Dashboard IoT"
+              className="w-full h-full object-cover brightness-110 contrast-125"
+            />
+
+            {/* Painel 1 - Reservatório Superior */}
+            <div className="absolute top-[10%] left-[10%] w-64 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-cyan-400 animate-[pulse_3s_ease-in-out_infinite] shadow-lg">
+              <h3 className="font-bold text-cyan-300 mb-2">Reservatório Superior</h3>
+              <p>Nível: <span className="text-cyan-200 font-semibold">75%</span></p>
+              <p>Volume: <span className="text-white">15000L</span></p>
+              <p>Status bomba: <span className="text-green-400 font-semibold">Ativa</span></p>
+              <p className="text-xs text-gray-400 mt-2">Atualizado há 10s</p>
+            </div>
+
+            {/* Painel 2 - Cisterna */}
+            <div className="absolute top-[10%] right-[10%] w-64 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-yellow-400 animate-[pulse_4s_ease-in-out_infinite] shadow-lg">
+              <h3 className="font-bold text-yellow-300 mb-2">Cisterna</h3>
+              <p>Nível: <span className="text-yellow-100 font-semibold">42%</span></p>
+              <p>Volume: <span className="text-white">8400L</span></p>
+              <p>Status bomba: <span className="text-red-400 font-semibold">Inativa</span></p>
+              <p className="text-xs text-gray-400 mt-2">Atualizado há 8s</p>
+            </div>
+
+            {/* Painel 3 - Consumo Diário */}
+            <div className="absolute bottom-[10%] left-[50%] translate-x-[-50%] w-64 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-green-400 animate-[pulse_5s_ease-in-out_infinite] shadow-lg">
+              <h3 className="font-bold text-green-300 mb-2">Consumo Diário</h3>
+              <p>Total: <span className="text-white font-semibold">2.800L</span></p>
+              <p>Média por apê: <span className="text-white font-semibold">140L</span></p>
+              <p className="text-xs text-gray-400 mt-2">Atualizado em tempo real</p>
+            </div>
           </div>
         </div>
       </section>
-    </main>
+
+      {/* IMAGENS ADICIONAIS COM DADOS */}
+      <section className="bg-gray-950 text-white py-16 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+          {[
+            {
+              src: '/reservatorio1.jfif',
+              title: 'Reservatório 1',
+              nivel: '65%',
+              volume: '13000L',
+              status: 'Ativa',
+              cor: 'cyan'
+            },
+            {
+              src: '/reservatorio2.jfif',
+              title: 'Reservatório 2',
+              nivel: '50%',
+              volume: '10000L',
+              status: 'Inativa',
+              cor: 'yellow'
+            },
+            {
+              src: '/bombas1.jfif',
+              title: 'Sala de Bombas 1',
+              nivel: 'Operando',
+              volume: 'Fluxo normal',
+              status: 'Ativa',
+              cor: 'green'
+            },
+            {
+              src: '/bombas2.jfif',
+              title: 'Sala de Bombas 2',
+              nivel: 'Parada técnica',
+              volume: 'Sem fluxo',
+              status: 'Inativa',
+              cor: 'red'
+            },
+          ].map((item, i) => (
+            <div key={i} className="relative rounded-xl overflow-hidden shadow-lg">
+              <img
+                src={item.src}
+                alt={item.title}
+                className="w-full h-72 object-cover brightness-110 contrast-125"
+              />
+              <div className={`absolute bottom-4 left-4 w-60 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-${item.cor}-400 animate-[pulse_6s_ease-in-out_infinite]`}>
+                <h3 className={`font-bold text-${item.cor}-300 mb-2`}>{item.title}</h3>
+                <p>Nível: <span className={`text-${item.cor}-200 font-semibold`}>{item.nivel}</span></p>
+                <p>Volume: <span className="text-white font-semibold">{item.volume}</span></p>
+                <p>Status: <span className={`text-${item.cor}-400 font-semibold`}>{item.status}</span></p>
+                <p className="text-xs text-gray-400 mt-2">Atualizado há instantes</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BENEFÍCIOS */}
+      <section className="bg-white text-gray-900 py-16 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6">Por que escolher a NexuSense IoT?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-2">📡 Monitoramento em tempo real</h3>
+              <p>Acompanhe o nível da água dos reservatórios 24h por dia com dados ao vivo.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">⚠️ Alertas inteligentes</h3>
+              <p>Receba notificações automáticas de níveis críticos ou falhas no sistema.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">💧 Economia e sustentabilidade</h3>
+              <p>Identifique desperdícios e otimize o uso da água com nossos relatórios.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
-

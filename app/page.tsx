@@ -6,7 +6,6 @@ export default function Home() {
       {/* HERO SECTION */}
       <main className="relative min-h-screen flex flex-col items-center justify-center text-white bg-black">
         <div className="absolute inset-0 bg-[url('/demo-dashboard.jfif')] bg-cover bg-center" />
-
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
         <div className="relative z-10 text-center px-6 -mt-12">
@@ -35,98 +34,28 @@ export default function Home() {
         </div>
       </main>
 
-      {/* DASHBOARD ANIMADO */}
-      <section className="relative bg-gray-900 text-white py-16 px-6">
+      {/* NOVAS IMAGENS COM SOBREPOSIÇÃO DE DADOS */}
+      <section className="bg-gray-900 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Veja a plataforma em ação</h2>
+          <h2 className="text-3xl font-bold mb-10">Monitoramento em tempo real</h2>
 
-          <div className="relative w-full h-auto rounded-xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="relative col-span-2">
-              <img
-                src="/demo-dashboard.jfif"
-                alt="Dashboard IoT"
-                className="w-full h-full object-cover"
-              />
-
-              {/* Painel 1 - Reservatório Superior */}
-              <div className="absolute top-[18%] left-[23%] w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-cyan-400 animate-[pulse_3s_ease-in-out_infinite] shadow-lg">
-                <h3 className="font-bold text-cyan-300 mb-2">Reservatório Superior</h3>
-                <p className="mb-1">Nível atual: <span className="text-cyan-200 font-semibold">75%</span></p>
-                <p className="mb-1">Volume: <span className="text-white">15000L</span></p>
-                <p>Status da bomba: <span className="text-green-400 font-semibold">Ativa</span></p>
-                <p className="text-xs text-gray-400 mt-2">Atualizado há 10s</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { src: "/reservatorio1.jfif", titulo: "Reservatório A", nivel: "82%", volume: "16400L", cor: "cyan" },
+              { src: "/reservatorio2.jfif", titulo: "Reservatório B", nivel: "68%", volume: "13600L", cor: "blue" },
+              { src: "/bombas1.jfif", titulo: "Sala de Bombas 1", status: "Ativa", cor: "green" },
+              { src: "/bombas2.jfif", titulo: "Sala de Bombas 2", status: "Inativa", cor: "red" },
+            ].map((item, idx) => (
+              <div key={idx} className="relative rounded-xl overflow-hidden shadow-2xl">
+                <img src={item.src} alt={item.titulo} className="w-full h-64 object-cover" />
+                <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-start justify-end p-4`}>
+                  <h3 className={`text-${item.cor}-300 font-bold text-xl mb-1`}>{item.titulo}</h3>
+                  {item.nivel && <p>Nível: <span className="font-semibold">{item.nivel}</span></p>}
+                  {item.volume && <p>Volume: <span className="font-semibold">{item.volume}</span></p>}
+                  {item.status && <p>Status: <span className={`text-${item.cor}-400 font-semibold`}>{item.status}</span></p>}
+                </div>
               </div>
-
-              {/* Painel 2 - Cisterna */}
-              <div className="absolute top-[50%] left-[48%] w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-yellow-400 animate-[pulse_4s_ease-in-out_infinite] shadow-lg">
-                <h3 className="font-bold text-yellow-300 mb-2">Cisterna</h3>
-                <p className="mb-1">Nível atual: <span className="text-yellow-100 font-semibold">42%</span></p>
-                <p className="mb-1">Volume: <span className="text-white">8400L</span></p>
-                <p>Status da bomba: <span className="text-red-400 font-semibold">Inativa</span></p>
-                <p className="text-xs text-gray-400 mt-2">Atualizado há 8s</p>
-              </div>
-
-              {/* Painel 3 - Consumo */}
-              <div className="absolute top-[20%] right-[5%] w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-green-400 animate-[pulse_5s_ease-in-out_infinite] shadow-lg">
-                <h3 className="font-bold text-green-300 mb-2">Consumo Diário</h3>
-                <p className="mb-1">Total: <span className="text-white font-semibold">2.800L</span></p>
-                <p>Média por apê: <span className="text-white font-semibold">140L</span></p>
-                <p className="text-xs text-gray-400 mt-2">Atualizado em tempo real</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* GALERIA DE IMAGENS COM DADOS SIMULADOS */}
-      <section className="bg-gray-950 text-white py-16 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10">Imagens Reais da Instalação</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Imagem 1 - Reservatório 1 */}
-            <div className="relative overflow-hidden rounded-xl shadow-xl group">
-              <img src="/reservatorio1.jfif" alt="Reservatório 1" className="w-full h-60 object-cover" />
-              <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-md p-3 rounded-lg text-sm border border-cyan-400 animate-pulse group-hover:scale-105 transition">
-                <p className="font-bold text-cyan-300 mb-1">Reservatório A</p>
-                <p>Nível: <span className="text-cyan-200 font-semibold">78%</span></p>
-                <p>Volume: <span className="text-white">15600L</span></p>
-                <p>Status: <span className="text-green-400 font-semibold">Ativa</span></p>
-              </div>
-            </div>
-
-            {/* Imagem 2 - Reservatório 2 */}
-            <div className="relative overflow-hidden rounded-xl shadow-xl group">
-              <img src="/reservatorio2.jfif" alt="Reservatório 2" className="w-full h-60 object-cover" />
-              <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-md p-3 rounded-lg text-sm border border-cyan-400 animate-pulse group-hover:scale-105 transition">
-                <p className="font-bold text-cyan-300 mb-1">Reservatório B</p>
-                <p>Nível: <span className="text-cyan-200 font-semibold">61%</span></p>
-                <p>Volume: <span className="text-white">12200L</span></p>
-                <p>Status: <span className="text-green-400 font-semibold">Ativa</span></p>
-              </div>
-            </div>
-
-            {/* Imagem 3 - Bombas 1 */}
-            <div className="relative overflow-hidden rounded-xl shadow-xl group">
-              <img src="/bombas1.jfif" alt="Sala das Bombas 1" className="w-full h-60 object-cover" />
-              <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-md p-3 rounded-lg text-sm border border-yellow-400 animate-pulse group-hover:scale-105 transition">
-                <p className="font-bold text-yellow-300 mb-1">Sala de Bombas</p>
-                <p>Bomba 1: <span className="text-green-400 font-semibold">Ligada</span></p>
-                <p>Bomba 2: <span className="text-red-400 font-semibold">Desligada</span></p>
-                <p className="text-xs text-gray-300 mt-1">Atualizado há 15s</p>
-              </div>
-            </div>
-
-            {/* Imagem 4 - Bombas 2 */}
-            <div className="relative overflow-hidden rounded-xl shadow-xl group">
-              <img src="/bombas2.jfif" alt="Sala das Bombas 2" className="w-full h-60 object-cover" />
-              <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-md p-3 rounded-lg text-sm border border-yellow-400 animate-pulse group-hover:scale-105 transition">
-                <p className="font-bold text-yellow-300 mb-1">Controle de Pressão</p>
-                <p>Pressão: <span className="text-white font-semibold">4.2 bar</span></p>
-                <p>Status: <span className="text-green-400 font-semibold">Normal</span></p>
-                <p className="text-xs text-gray-300 mt-1">Atualizado em tempo real</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

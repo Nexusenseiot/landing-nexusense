@@ -5,7 +5,7 @@ export default function Home() {
     <>
       {/* HERO SECTION */}
       <main className="relative min-h-screen flex flex-col items-center justify-center text-white bg-black">
-        <div className="absolute inset-0 bg-[url('/demo-dashboard.jfif')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/demo-dashboard.jfif')] bg-cover bg-center brightness-75" />
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
         <div className="relative z-10 text-center px-6 -mt-12">
@@ -34,101 +34,93 @@ export default function Home() {
         </div>
       </main>
 
-      {/* DASHBOARD ANIMADO */}
+      {/* DASHBOARD ANIMADO - PAINÉIS CENTRAIS */}
       <section className="relative bg-gray-900 text-white py-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Veja a plataforma em ação</h2>
 
-          <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-2xl">
+          <div className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl">
             <img
               src="/demo-dashboard.jfif"
               alt="Dashboard IoT"
-              className="w-full h-full object-cover brightness-110 contrast-125"
+              className="w-full h-full object-cover brightness-90"
             />
 
-            {/* Painel 1 - Reservatório Superior */}
-            <div className="absolute top-[10%] left-[10%] w-64 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-cyan-400 animate-[pulse_3s_ease-in-out_infinite] shadow-lg">
-              <h3 className="font-bold text-cyan-300 mb-2">Reservatório Superior</h3>
-              <p>Nível: <span className="text-cyan-200 font-semibold">75%</span></p>
-              <p>Volume: <span className="text-white">15000L</span></p>
-              <p>Status bomba: <span className="text-green-400 font-semibold">Ativa</span></p>
-              <p className="text-xs text-gray-400 mt-2">Atualizado há 10s</p>
-            </div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 py-6 md:py-10 bg-black/40">
+              <div className="w-full max-w-md bg-black/80 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-cyan-400 animate-pulse shadow-lg">
+                <h3 className="font-bold text-cyan-300 mb-2">Reservatório Superior</h3>
+                <p>Nível atual: <span className="text-cyan-200 font-semibold">75%</span></p>
+                <p>Volume: <span className="text-white">15000L</span></p>
+                <p>Status da bomba: <span className="text-green-400 font-semibold">Ativa</span></p>
+                <p className="text-xs text-gray-400 mt-2">Atualizado há 10s</p>
+              </div>
 
-            {/* Painel 2 - Cisterna */}
-            <div className="absolute top-[10%] right-[10%] w-64 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-yellow-400 animate-[pulse_4s_ease-in-out_infinite] shadow-lg">
-              <h3 className="font-bold text-yellow-300 mb-2">Cisterna</h3>
-              <p>Nível: <span className="text-yellow-100 font-semibold">42%</span></p>
-              <p>Volume: <span className="text-white">8400L</span></p>
-              <p>Status bomba: <span className="text-red-400 font-semibold">Inativa</span></p>
-              <p className="text-xs text-gray-400 mt-2">Atualizado há 8s</p>
-            </div>
+              <div className="w-full max-w-md bg-black/80 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-yellow-400 animate-pulse shadow-lg">
+                <h3 className="font-bold text-yellow-300 mb-2">Cisterna</h3>
+                <p>Nível atual: <span className="text-yellow-100 font-semibold">42%</span></p>
+                <p>Volume: <span className="text-white">8400L</span></p>
+                <p>Status da bomba: <span className="text-red-400 font-semibold">Inativa</span></p>
+                <p className="text-xs text-gray-400 mt-2">Atualizado há 8s</p>
+              </div>
 
-            {/* Painel 3 - Consumo Diário */}
-            <div className="absolute bottom-[10%] left-[50%] translate-x-[-50%] w-64 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-green-400 animate-[pulse_5s_ease-in-out_infinite] shadow-lg">
-              <h3 className="font-bold text-green-300 mb-2">Consumo Diário</h3>
-              <p>Total: <span className="text-white font-semibold">2.800L</span></p>
-              <p>Média por apê: <span className="text-white font-semibold">140L</span></p>
-              <p className="text-xs text-gray-400 mt-2">Atualizado em tempo real</p>
+              <div className="w-full max-w-md bg-black/80 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-green-400 animate-pulse shadow-lg">
+                <h3 className="font-bold text-green-300 mb-2">Consumo Diário</h3>
+                <p>Total: <span className="text-white font-semibold">2.800L</span></p>
+                <p>Média por apê: <span className="text-white font-semibold">140L</span></p>
+                <p className="text-xs text-gray-400 mt-2">Atualizado em tempo real</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* IMAGENS ADICIONAIS COM DADOS */}
-      <section className="bg-gray-950 text-white py-16 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-          {[
-            {
-              src: '/reservatorio1.jfif',
-              title: 'Reservatório 1',
-              nivel: '65%',
-              volume: '13000L',
-              status: 'Ativa',
-              cor: 'cyan'
-            },
-            {
-              src: '/reservatorio2.jfif',
-              title: 'Reservatório 2',
-              nivel: '50%',
-              volume: '10000L',
-              status: 'Inativa',
-              cor: 'yellow'
-            },
-            {
-              src: '/bombas1.jfif',
-              title: 'Sala de Bombas 1',
-              nivel: 'Operando',
-              volume: 'Fluxo normal',
-              status: 'Ativa',
-              cor: 'green'
-            },
-            {
-              src: '/bombas2.jfif',
-              title: 'Sala de Bombas 2',
-              nivel: 'Parada técnica',
-              volume: 'Sem fluxo',
-              status: 'Inativa',
-              cor: 'red'
-            },
-          ].map((item, i) => (
-            <div key={i} className="relative rounded-xl overflow-hidden shadow-lg">
-              <img
-                src={item.src}
-                alt={item.title}
-                className="w-full h-72 object-cover brightness-110 contrast-125"
-              />
-              <div className={`absolute bottom-4 left-4 w-60 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-${item.cor}-400 animate-[pulse_6s_ease-in-out_infinite]`}>
-                <h3 className={`font-bold text-${item.cor}-300 mb-2`}>{item.title}</h3>
-                <p>Nível: <span className={`text-${item.cor}-200 font-semibold`}>{item.nivel}</span></p>
-                <p>Volume: <span className="text-white font-semibold">{item.volume}</span></p>
-                <p>Status: <span className={`text-${item.cor}-400 font-semibold`}>{item.status}</span></p>
-                <p className="text-xs text-gray-400 mt-2">Atualizado há instantes</p>
-              </div>
-            </div>
-          ))}
+      {/* IMAGENS COM DADOS */}
+<section className="bg-black text-white py-16 px-6">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+    {[
+      { src: 'reservatorio1.jfif', titulo: 'Reservatório 1', nivel: '82%', volume: '16400L' },
+      { src: 'reservatorio2.jfif', titulo: 'Reservatório 2', nivel: '39%', volume: '7800L' },
+      { src: 'bombas1.jfif', titulo: 'Sala das Bombas 1', status: 'Ativa' },
+      { src: 'bombas2.jfif', titulo: 'Sala das Bombas 2', status: 'Inativa' },
+    ].map((img, i) => (
+      <div key={i} className="relative rounded-xl overflow-hidden shadow-2xl">
+        <img
+          src={`/${img.src}`}
+          alt={img.titulo}
+          className="w-full h-[300px] object-cover brightness-125 saturate-200 contrast-125"
+        />
+        <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-cyan-400 shadow-xl animate-pulse w-fit max-w-[80%]">
+          <h3 className="text-cyan-300 font-bold text-lg mb-2 drop-shadow-[0_0_4px_rgba(0,255,255,0.8)]">
+            {img.titulo}
+          </h3>
+          {img.nivel && (
+            <>
+              <p className="text-cyan-100">
+                Nível atual: <span className="font-bold">{img.nivel}</span>
+              </p>
+              <p>
+                Volume: <span className="text-white font-semibold">{img.volume}</span>
+              </p>
+            </>
+          )}
+          {img.status && (
+            <p>
+              Status da bomba:{' '}
+              <span
+                className={`font-semibold ${
+                  img.status === 'Ativa' ? 'text-green-400' : 'text-red-400'
+                }`}
+              >
+                {img.status}
+              </span>
+            </p>
+          )}
+          <p className="text-xs text-gray-300 mt-2">Atualizado há poucos segundos</p>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* BENEFÍCIOS */}
       <section className="bg-white text-gray-900 py-16 px-6">

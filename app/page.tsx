@@ -6,7 +6,6 @@ export default function Home() {
       {/* HERO SECTION */}
       <main className="relative min-h-screen flex flex-col items-center justify-center text-white bg-black">
         <div className="absolute inset-0 bg-[url('/demo-dashboard.jfif')] bg-cover bg-center" />
-
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
         <div className="relative z-10 text-center px-6 -mt-12">
@@ -36,20 +35,20 @@ export default function Home() {
       </main>
 
       {/* DASHBOARD ANIMADO */}
-      <section className="relative bg-gray-900 text-white py-16 px-6">
+      <section className="relative bg-gray-900 text-white py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Veja a plataforma em ação</h2>
 
-          <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-2xl">
+          <div className="relative w-full h-auto rounded-xl overflow-hidden shadow-2xl">
             <img
               src="/demo-dashboard.jfif"
               alt="Dashboard IoT"
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-cover rounded-xl"
             />
 
-            {/* Painéis da Dashboard responsivos */}
-            <div className="absolute inset-0 hidden md:block">
-              <div className="absolute top-[18%] left-[23%] w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-cyan-400 animate-[pulse_3s_ease-in-out_infinite] shadow-lg">
+            <div className="flex flex-col md:flex-row md:flex-wrap gap-6 justify-center absolute inset-0 p-4 items-start">
+              {/* Painel 1 */}
+              <div className="w-full md:w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-cyan-400 animate-[pulse_3s_ease-in-out_infinite] shadow-lg">
                 <h3 className="font-bold text-cyan-300 mb-2">Reservatório Superior</h3>
                 <p className="mb-1">Nível atual: <span className="text-cyan-200 font-semibold">75%</span></p>
                 <p className="mb-1">Volume: <span className="text-white">15000L</span></p>
@@ -57,7 +56,8 @@ export default function Home() {
                 <p className="text-xs text-gray-400 mt-2">Atualizado há 10s</p>
               </div>
 
-              <div className="absolute top-[50%] left-[48%] w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-yellow-400 animate-[pulse_4s_ease-in-out_infinite] shadow-lg">
+              {/* Painel 2 */}
+              <div className="w-full md:w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-yellow-400 animate-[pulse_4s_ease-in-out_infinite] shadow-lg">
                 <h3 className="font-bold text-yellow-300 mb-2">Cisterna</h3>
                 <p className="mb-1">Nível atual: <span className="text-yellow-100 font-semibold">42%</span></p>
                 <p className="mb-1">Volume: <span className="text-white">8400L</span></p>
@@ -65,30 +65,8 @@ export default function Home() {
                 <p className="text-xs text-gray-400 mt-2">Atualizado há 8s</p>
               </div>
 
-              <div className="absolute top-[20%] right-[5%] w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-green-400 animate-[pulse_5s_ease-in-out_infinite] shadow-lg">
-                <h3 className="font-bold text-green-300 mb-2">Consumo Diário</h3>
-                <p className="mb-1">Total: <span className="text-white font-semibold">2.800L</span></p>
-                <p>Média por apê: <span className="text-white font-semibold">140L</span></p>
-                <p className="text-xs text-gray-400 mt-2">Atualizado em tempo real</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6 md:hidden mt-8 px-4">
-              <div className="bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-cyan-400 shadow-lg">
-                <h3 className="font-bold text-cyan-300 mb-2">Reservatório Superior</h3>
-                <p className="mb-1">Nível atual: <span className="text-cyan-200 font-semibold">75%</span></p>
-                <p className="mb-1">Volume: <span className="text-white">15000L</span></p>
-                <p>Status da bomba: <span className="text-green-400 font-semibold">Ativa</span></p>
-                <p className="text-xs text-gray-400 mt-2">Atualizado há 10s</p>
-              </div>
-              <div className="bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-yellow-400 shadow-lg">
-                <h3 className="font-bold text-yellow-300 mb-2">Cisterna</h3>
-                <p className="mb-1">Nível atual: <span className="text-yellow-100 font-semibold">42%</span></p>
-                <p className="mb-1">Volume: <span className="text-white">8400L</span></p>
-                <p>Status da bomba: <span className="text-red-400 font-semibold">Inativa</span></p>
-                <p className="text-xs text-gray-400 mt-2">Atualizado há 8s</p>
-              </div>
-              <div className="bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-green-400 shadow-lg">
+              {/* Painel 3 */}
+              <div className="w-full md:w-72 bg-black/70 backdrop-blur-md text-left text-sm p-4 rounded-xl border border-green-400 animate-[pulse_5s_ease-in-out_infinite] shadow-lg">
                 <h3 className="font-bold text-green-300 mb-2">Consumo Diário</h3>
                 <p className="mb-1">Total: <span className="text-white font-semibold">2.800L</span></p>
                 <p>Média por apê: <span className="text-white font-semibold">140L</span></p>
